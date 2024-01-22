@@ -1,0 +1,289 @@
+
+   Router config:::::::::
+
+###########Campus 1 router:
+interface fa0/0
+ip address 192.168.10.254 255.255.255.0
+no shut
+do wr
+
+exit
+
+interface se2/0
+ip address 10.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+interface se3/0
+ip address 20.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+interface se6/0
+ip address 30.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+
+
+###########Campus 2 router:
+interface fa0/0
+ip address 130.10.1.254 255.255.255.0
+no shut
+do wr
+
+exit
+
+interface fa1/0
+ip address 130.10.2.254 255.255.255.0
+no shut
+do wr
+
+exit
+
+
+interface se2/0
+ip address 10.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+interface se3/0
+ip address 60.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+interface se6/0
+ip address 50.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+
+
+###########Campus 3 router:
+interface fa0/0
+ip address 192.168.20.254 255.255.255.0
+no shut
+do wr
+
+exit
+
+interface se2/0
+ip address 20.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+
+interface se3/0
+ip address 40.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+
+interface se6/0
+ip address 60.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+
+interface se7/0
+ip address 70.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+interface se8/0
+ip address 80.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+
+
+###########Campus 4 router:
+interface fa0/0
+ip address 136.15.32.254 255.255.240.0
+no shut
+do wr
+
+exit
+
+interface fa1/0
+ip address 136.15.16.254 255.255.240.0
+no shut
+do wr
+
+exit
+
+interface fa6/0
+ip address 136.15.48.254 255.255.240.0
+no shut
+do wr
+
+exit
+
+interface se2/0
+ip address 30.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+interface se3/0
+ip address 40.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+
+###########Campus 5 router:
+interface fa0/0
+ip address 192.168.40.62 255.255.255.224
+no shut
+do wr
+
+exit
+
+interface fa1/0
+ip address 192.168.40.94 255.255.255.224
+no shut
+do wr
+
+exit
+
+interface se2/0
+ip address 50.0.0.2 255.0.0.0
+no shut
+do wr
+
+exit
+
+interface se3/0
+ip address 70.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+
+###########Campus 6 router:
+interface fa0/0
+ip address 100.1.0.254 255.255.0.0
+no shut
+do wr
+
+exit
+
+
+interface fa1/0
+ip address 100.2.0.254 255.255.0.0
+no shut
+do wr
+
+exit
+
+interface fa6/0
+ip address 100.3.0.254 255.255.0.0
+no shut
+do wr
+
+exit
+interface se2/0
+ip address 80.0.0.1 255.0.0.0
+clock rate 64000
+no shut
+do wr
+
+exit
+
+
+
+    OSPF::::::
+
+###########Campus 1 router:
+
+router ospf 1
+network 192.168.10.0 0.0.0.255 area 1
+network 10.0.0.0 0.255.255.255 area 1
+network 20.0.0.0 0.255.255.255 area 1
+network 30.0.0.0 0.255.255.255 area 1
+
+exit
+
+
+
+###########Campus 2 router:
+
+router ospf 2
+network 130.10.0.0 0.0.0.255 area 1
+network 10.0.0.0 0.255.255.255 area 1
+network 50.0.0.0 0.255.255.255 area 1
+network 60.0.0.0 0.255.255.255 area 1
+
+exit
+
+
+###########Campus 3 router:
+router ospf 3
+network 192.168.20.0 0.0.0.255 area 1
+network 80.0.0.0 0.255.255.255 area 1
+network 20.0.0.0 0.255.255.255 area 1
+network 40.0.0.0 0.255.255.255 area 1
+network 60.0.0.0 0.255.255.255 area 1
+network 70.0.0.0 0.255.255.255 area 1
+
+exit
+
+
+
+###########Campus 4 router:
+router ospf 4
+network 136.15.0.0 0.0.15.255 area 1
+network 30.0.0.0 0.255.255.255 area 1
+network 40.0.0.0 0.255.255.255 area 1
+
+exit
+
+
+###########Campus 5 router:
+router ospf 5
+network 192.168.40.0 0.0.0.31 area 1
+network 50.0.0.0 0.255.255.255 area 1
+network 70.0.0.0 0.255.255.255 area 1
+
+exit
+
+
+###########Campus 6 router:
+router ospf 6
+network 100.0.0.0 0.0.255.255 area 1
+network 80.0.0.0 0.255.255.255 area 1
+
+exit

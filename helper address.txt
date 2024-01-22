@@ -1,0 +1,12 @@
+int fa0/0
+ip helper-address 192.168.20.2
+exit
+
+int fa1/0
+ip helper-address 192.168.20.2
+exit
+
+int fa6/0
+ip helper-address 192.168.20.2
+exit
+
